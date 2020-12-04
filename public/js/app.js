@@ -6,18 +6,18 @@ fetch('http://puzzle.mead.io/puzzle').then((response)=>{
 
 })
 
-fetch(' http://localhost:3000/weather?address=benguluru').then((response)=>{
-    response.json().then((data)=>{
-        if(data.error){
-            console.log(data.error)
-        }
-        else{
-            console.log(data.location)
-            console.log(data.forecast)
-        }
-    })
+// fetch(' http://localhost:3000/weather?address=benguluru').then((response)=>{
+//     response.json().then((data)=>{
+//         if(data.error){
+//             console.log(data.error)
+//         }
+//         else{
+//             console.log(data.location)
+//             console.log(data.forecast)
+//         }
+//     })
   
-})
+// })
 
 const weatherForm = document.querySelector('form')
 const search= document.querySelector('input')
@@ -35,8 +35,8 @@ weatherForm.addEventListener('submit',(e)=>{
    {
        messageOne.textContent ='Loading...'
        messageTwo.textContent =''
-       
-   fetch(' http://localhost:3000/weather?address='+encodeURIComponent(location)).then((response)=>{
+
+   fetch('/weather?address='+encodeURIComponent(location)).then((response)=>{
        response.json().then((data)=>{
            if(data.error){
             //console.log(data.error)
