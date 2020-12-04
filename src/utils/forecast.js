@@ -8,18 +8,14 @@ const forecast=(lat,long,callback)=>{
     request({url , json:true},(error,{body})=>{
         if(error){
             callback('Unable to connect ',undefined)
-        }else if(body.error){
-            callback('unable to find location',undefined)
-        }else{
-          
-            callback(undefined,{
-                tempValue: body.current.temperature,
-                feelsLike: body.current.feelslike
-                
-            })
-    //callback(undefined,response.body.current.weather_descriptions+' It is currently '+ tempValue + ' it feels like '+feelsLike)
-    
         }
+        else if(body.error){
+            callback('unable to find location',undefined)
+        }
+        else{
+            
+            callback(undefined,body.current.weather_descriptions+' It is currently '+ body.current.temperature+ ' it feels like '+body.current.feelslike)
+             }
     })
 }
 
